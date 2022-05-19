@@ -22,12 +22,16 @@ struct WeeklyCalendar: View {
                         
                         Text(eatenItem.day)
                             .fontWeight(.bold)
-                            .foregroundColor(eatenItem.isCurrentDay ? kConfig.color.foregroundRevert.opacity(0.8) : kConfig.color.foreground)
+                            .foregroundColor(eatenItem.isCurrentDay ?
+                                             kConfig.color.foregroundRevert.opacity(0.8)
+                                             : kConfig.color.foreground)
                         
                         Text(eatenItem.date)
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(eatenItem.isCurrentDay ? kConfig.color.foregroundRevert : kConfig.color.foreground)
+                            .foregroundColor(eatenItem.isCurrentDay ?
+                                             kConfig.color.foregroundRevert
+                                             : kConfig.color.foreground)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical)
@@ -43,11 +47,5 @@ struct WeeklyCalendar: View {
             
             Spacer()
         }//:VStack
-    }
-}
-
-struct WeekCalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeeklyCalendar()
     }
 }

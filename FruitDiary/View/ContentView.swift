@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var weekCalendarVM: WeekCalendarViewModel
+    @StateObject var dailyFruitVM = DailyFruitViewModel()
     
     var body: some View {
         VStack {

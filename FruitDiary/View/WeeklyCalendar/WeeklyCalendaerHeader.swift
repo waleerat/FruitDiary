@@ -57,9 +57,3 @@ struct WeeklyCalendaerHeader: View {
         .padding(.horizontal)
     }
 }
-
-struct ArrowView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeeklyCalendaerHeader()
-    }
-}

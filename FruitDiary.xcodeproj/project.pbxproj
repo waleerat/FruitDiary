@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB51E531283643DF0064E3C3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AB51E530283643DF0064E3C3 /* Alamofire */; };
+		AB51E5362836440C0064E3C3 /* ErrorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5322836440B0064E3C3 /* ErrorStruct.swift */; };
+		AB51E5372836440C0064E3C3 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5332836440B0064E3C3 /* ServiceAPI.swift */; };
+		AB51E5382836440C0064E3C3 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5342836440B0064E3C3 /* AlamofireManager.swift */; };
+		AB51E5392836440C0064E3C3 /* URLUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5352836440C0064E3C3 /* URLUtility.swift */; };
+		AB51E53B283648B00064E3C3 /* DailyFruitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E53A283648B00064E3C3 /* DailyFruitViewModel.swift */; };
+		AB51E53D28364ADF0064E3C3 /* DailyFruitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E53C28364ADF0064E3C3 /* DailyFruitModel.swift */; };
+		AB51E53F28364AFD0064E3C3 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E53E28364AFD0064E3C3 /* EntryModel.swift */; };
 		AB8D59A428363D8900DC1CA4 /* DailyEatenFruitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8D59A328363D8800DC1CA4 /* DailyEatenFruitApp.swift */; };
 		AB8D59A828363D8B00DC1CA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8D59A728363D8B00DC1CA4 /* Assets.xcassets */; };
 		AB8D59AB28363D8B00DC1CA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8D59AA28363D8B00DC1CA4 /* Preview Assets.xcassets */; };
@@ -22,6 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB51E5322836440B0064E3C3 /* ErrorStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorStruct.swift; sourceTree = "<group>"; };
+		AB51E5332836440B0064E3C3 /* ServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
+		AB51E5342836440B0064E3C3 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
+		AB51E5352836440C0064E3C3 /* URLUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLUtility.swift; sourceTree = "<group>"; };
+		AB51E53A283648B00064E3C3 /* DailyFruitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFruitViewModel.swift; sourceTree = "<group>"; };
+		AB51E53C28364ADF0064E3C3 /* DailyFruitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFruitModel.swift; sourceTree = "<group>"; };
+		AB51E53E28364AFD0064E3C3 /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
 		AB8D59A028363D8800DC1CA4 /* FruitDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FruitDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8D59A328363D8800DC1CA4 /* DailyEatenFruitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyEatenFruitApp.swift; sourceTree = "<group>"; };
 		AB8D59A728363D8B00DC1CA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB51E531283643DF0064E3C3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,12 +83,11 @@
 		AB8D59A228363D8800DC1CA4 /* FruitDiary */ = {
 			isa = PBXGroup;
 			children = (
-				AB8D59BE28363E0A00DC1CA4 /* Utility */,
+				AB8D59CA2836407600DC1CA4 /* App */,
 				AB8D59B328363DC200DC1CA4 /* Model */,
 				AB8D59B228363DBA00DC1CA4 /* View */,
 				AB8D59B128363DB000DC1CA4 /* ViewModel */,
-				AB8D59A328363D8800DC1CA4 /* DailyEatenFruitApp.swift */,
-				AB8D59A728363D8B00DC1CA4 /* Assets.xcassets */,
+				AB8D59BE28363E0A00DC1CA4 /* Utility */,
 				AB8D59A928363D8B00DC1CA4 /* Preview Content */,
 			);
 			path = FruitDiary;
@@ -90,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				AB8D59B428363DCA00DC1CA4 /* WeekCalendarViewModel.swift */,
+				AB51E53A283648B00064E3C3 /* DailyFruitViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -97,9 +113,8 @@
 		AB8D59B228363DBA00DC1CA4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB8D59C92836400100DC1CA4 /* WeeklyCalendar */,
 				AB8D59BC28363E0200DC1CA4 /* ContentView.swift */,
-				AB8D59B828363DF200DC1CA4 /* WeeklyCalendaerHeader.swift */,
-				AB8D59B928363DF200DC1CA4 /* WeeklyCalendar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				AB8D59B628363DE800DC1CA4 /* WeekDaysModel.swift */,
+				AB51E53C28364ADF0064E3C3 /* DailyFruitModel.swift */,
+				AB51E53E28364AFD0064E3C3 /* EntryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,10 +132,11 @@
 		AB8D59BE28363E0A00DC1CA4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				AB8D59C328363E3500DC1CA4 /* Constant.swift */,
-				AB8D59C428363E3500DC1CA4 /* Device.swift */,
+				AB8D59CB283640CE00DC1CA4 /* APIs */,
 				AB8D59C028363E2400DC1CA4 /* Modifier */,
 				AB8D59BF28363E1900DC1CA4 /* Extension */,
+				AB8D59C328363E3500DC1CA4 /* Constant.swift */,
+				AB8D59C428363E3500DC1CA4 /* Device.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -139,6 +157,35 @@
 			path = Modifier;
 			sourceTree = "<group>";
 		};
+		AB8D59C92836400100DC1CA4 /* WeeklyCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				AB8D59B828363DF200DC1CA4 /* WeeklyCalendaerHeader.swift */,
+				AB8D59B928363DF200DC1CA4 /* WeeklyCalendar.swift */,
+			);
+			path = WeeklyCalendar;
+			sourceTree = "<group>";
+		};
+		AB8D59CA2836407600DC1CA4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AB8D59A328363D8800DC1CA4 /* DailyEatenFruitApp.swift */,
+				AB8D59A728363D8B00DC1CA4 /* Assets.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AB8D59CB283640CE00DC1CA4 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				AB51E5342836440B0064E3C3 /* AlamofireManager.swift */,
+				AB51E5322836440B0064E3C3 /* ErrorStruct.swift */,
+				AB51E5332836440B0064E3C3 /* ServiceAPI.swift */,
+				AB51E5352836440C0064E3C3 /* URLUtility.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,6 +202,9 @@
 			dependencies = (
 			);
 			name = FruitDiary;
+			packageProductDependencies = (
+				AB51E530283643DF0064E3C3 /* Alamofire */,
+			);
 			productName = DailyEatenFruit;
 			productReference = AB8D59A028363D8800DC1CA4 /* FruitDiary.app */;
 			productType = "com.apple.product-type.application";
@@ -183,6 +233,9 @@
 				Base,
 			);
 			mainGroup = AB8D599728363D8800DC1CA4;
+			packageReferences = (
+				AB51E52F283643DF0064E3C3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = AB8D59A128363D8800DC1CA4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -210,15 +263,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB8D59BB28363DF200DC1CA4 /* WeeklyCalendar.swift in Sources */,
+				AB51E5362836440C0064E3C3 /* ErrorStruct.swift in Sources */,
 				AB8D59B728363DE800DC1CA4 /* WeekDaysModel.swift in Sources */,
+				AB51E5382836440C0064E3C3 /* AlamofireManager.swift in Sources */,
 				AB8D59BD28363E0200DC1CA4 /* ContentView.swift in Sources */,
 				AB8D59C628363E3500DC1CA4 /* Device.swift in Sources */,
+				AB51E5392836440C0064E3C3 /* URLUtility.swift in Sources */,
 				AB8D59C828363E3B00DC1CA4 /* Modifier.swift in Sources */,
 				AB8D59C528363E3500DC1CA4 /* Constant.swift in Sources */,
 				AB8D59BA28363DF200DC1CA4 /* WeeklyCalendaerHeader.swift in Sources */,
 				AB8D59C228363E2D00DC1CA4 /* Date+Extension.swift in Sources */,
 				AB8D59A428363D8900DC1CA4 /* DailyEatenFruitApp.swift in Sources */,
+				AB51E5372836440C0064E3C3 /* ServiceAPI.swift in Sources */,
 				AB8D59B528363DCA00DC1CA4 /* WeekCalendarViewModel.swift in Sources */,
+				AB51E53D28364ADF0064E3C3 /* DailyFruitModel.swift in Sources */,
+				AB51E53F28364AFD0064E3C3 /* EntryModel.swift in Sources */,
+				AB51E53B283648B00064E3C3 /* DailyFruitViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +479,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AB51E52F283643DF0064E3C3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AB51E530283643DF0064E3C3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB51E52F283643DF0064E3C3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AB8D599828363D8800DC1CA4 /* Project object */;
 }
