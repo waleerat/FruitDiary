@@ -48,7 +48,7 @@ class WeekCalendarViewModel: ObservableObject {
     func getWeekDays(){
         
         let startDate = self.dateOfSelectedWeek.firstDateOfWeek()
-        let nuberOfWeek = self.dateOfSelectedWeek.numberOfWeek() - 1
+        let nuberOfWeek = self.dateOfSelectedWeek.numberOfWeek() - 2
         
         for index in 0..<7{
             let dateItem = startDate.dateCalculate(numberOfDays: index)

@@ -11,8 +11,6 @@ struct DashboardView: View {
     @EnvironmentObject var weekCalendarVM: WeekCalendarViewModel
     @EnvironmentObject var dailyFruitVM: DailyFruitViewModel 
     
-    @Binding var isEatenFruitFrom:Bool
-    
     @State var index = 0
     
     var body: some View {
@@ -49,7 +47,7 @@ struct DashboardView: View {
                            .environmentObject(dailyFruitVM)
                         
                        
-                        DailyFruitView(isEatenFruitFrom: $isEatenFruitFrom)
+                        DailyFruitView()
                             .environmentObject(weekCalendarVM)
                             .environmentObject(dailyFruitVM)
                         

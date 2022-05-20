@@ -12,7 +12,7 @@ struct DailyFruitView: View {
     @EnvironmentObject var weekCalendarVM: WeekCalendarViewModel
     @EnvironmentObject var dailyFruitVM: DailyFruitViewModel
     
-    @Binding var isEatenFruitFrom:Bool
+    @State var isEatenFruitFrom:Bool = false
     
     @State var isAddEntry:Bool = false
     @State var dailyEatenList: [FruitModel.MapView] = []
@@ -25,8 +25,8 @@ struct DailyFruitView: View {
                 if let _ = dailyFruitVM.getDailyItem(selectedDate: weekCalendarVM.selectedDate) {
                     IconButtonView(isActive: .constant(true),
                                    systemName: "plus",
-                                   width: 25,
-                                   height: 25,
+                                   width: 20,
+                                   height: 20,
                                    foreground: kConfig.color.foreground,
                                    buttonBackground: kConfig.color.buttonBackground
                     ) {
@@ -42,8 +42,8 @@ struct DailyFruitView: View {
                     if (dailyFruitVM.entryItems.count > 0) {
                         IconButtonView(isActive: .constant(true),
                                        systemName: "xmark.bin",
-                                       width: 20,
-                                       height: 25,
+                                       width: 17,
+                                       height: 20,
                                        foreground: kConfig.color.foreground,
                                        buttonBackground: kConfig.color.buttonBackground
                         ) {
@@ -71,8 +71,8 @@ struct DailyFruitView: View {
                         HStack {
                             IconButtonView(isActive: .constant(true),
                                            systemName: "plus",
-                                           width: 25,
-                                           height: 25,
+                                           width: 14,
+                                           height: 14,
                                            foreground: kConfig.color.foreground,
                                            buttonBackground: .clear
                             ) {

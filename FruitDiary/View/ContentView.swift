@@ -12,8 +12,6 @@ struct ContentView: View {
     @EnvironmentObject var weekCalendarVM: WeekCalendarViewModel
     @StateObject var dailyFruitVM = DailyFruitViewModel()
     
-    @State var isEatenFruitFrom:Bool = false
-    
     var body: some View {
         VStack{
             HStack{
@@ -29,13 +27,13 @@ struct ContentView: View {
                     Image(systemName: "info.circle")
                         .resizable()
                         .renderingMode(.template)
-                        .frame(width: 28, height: 28)
+                        .frame(width: 20, height: 20)
                         .foregroundColor(kConfig.color.foreground)
                 })
             }
             .padding()
             
-            DashboardView(isEatenFruitFrom: $isEatenFruitFrom)
+            DashboardView()
                 .environmentObject(weekCalendarVM)
                 .environmentObject(dailyFruitVM)
                 

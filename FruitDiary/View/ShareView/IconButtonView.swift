@@ -11,8 +11,8 @@ struct IconButtonView: View {
     @Binding var isActive: Bool
     var imageAsset:String?
     var systemName:String?
-    @State var width: CGFloat = 20
-    @State var height: CGFloat = 20
+    @State var width: CGFloat = 16
+    @State var height: CGFloat = 16
     @State var foreground = kConfig.color.foreground
     @State var buttonBackground:Color = kConfig.color.buttonBackground
     
