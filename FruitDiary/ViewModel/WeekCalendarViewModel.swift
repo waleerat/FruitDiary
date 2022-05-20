@@ -50,10 +50,9 @@ class WeekCalendarViewModel: ObservableObject {
         let startDate = self.dateOfSelectedWeek.firstDateOfWeek()
         let nuberOfWeek = self.dateOfSelectedWeek.numberOfWeek() - 2
         
-        for index in 0..<7{
+        for index in 0..<7 {
             let dateItem = startDate.dateCalculate(numberOfDays: index)
             
-            let currentDateFormat = Date().toString(format: "yyyy-MM-dd")
             let indexDateFormat = dateItem.toString(format: "yyyy-MM-dd")
             
             self.eatenInWeekDays.append(

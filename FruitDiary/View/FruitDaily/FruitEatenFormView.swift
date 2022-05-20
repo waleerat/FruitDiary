@@ -15,7 +15,7 @@ struct FruitEatenFormView: View {
     @Binding var isEatenFruitFrom: Bool
     @State var fruitSelectedName: String = " "
     @State var fruitId: Int = 0
-    @State var nrOfFruit: Int = 0
+    @State var nrOfFruit: Int = 1
     
     var body: some View {
         
@@ -56,6 +56,7 @@ struct FruitEatenFormView: View {
                             self.fruitSelectedName = fruitItem.type
                             self.fruitId = fruitItem.id
                             self.getCurrentSeleted(fruitId: fruitItem.id, selecteditem: fruitItem)
+                             
                         }
                     }
                 }
@@ -123,8 +124,6 @@ struct FruitEatenFormView: View {
                 getCurrentSeleted(fruitId: dailyFruitVM.fruitId)
             }
         }
-       
-        
     }
     
     func getCurrentSeleted(fruitId: Int, selecteditem: FruitModel.Response? = nil){
@@ -137,13 +136,14 @@ struct FruitEatenFormView: View {
             self.fruitSelectedName = selectedItem.type
             self.fruitId = selectedItem.id
             self.nrOfFruit = selectedItem.amount
+             
         } else {
             if let seleted = selectedItem {
                 self.fruitSelectedName = seleted.type
                 self.fruitId = seleted.id
                 self.nrOfFruit = seleted.amount
             } else {
-                nrOfFruit = 0
+                nrOfFruit = 1
             }
         }
     }

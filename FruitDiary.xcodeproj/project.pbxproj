@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AB355F552836E16900F87C71 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AB355F542836E16900F87C71 /* Kingfisher */; };
 		AB355F572836FA0200F87C71 /* ButtonWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F562836FA0200F87C71 /* ButtonWithText.swift */; };
+		AB355F592838256200F87C71 /* FruitEatenListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F582838256200F87C71 /* FruitEatenListView.swift */; };
+		AB355F5C28382B3700F87C71 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F5B28382B3600F87C71 /* UserDefaultManager.swift */; };
+		AB355F5E28382B5F00F87C71 /* StorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F5D28382B5F00F87C71 /* StorageKey.swift */; };
 		AB51E531283643DF0064E3C3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AB51E530283643DF0064E3C3 /* Alamofire */; };
 		AB51E5362836440C0064E3C3 /* ErrorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5322836440B0064E3C3 /* ErrorStruct.swift */; };
 		AB51E5372836440C0064E3C3 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5332836440B0064E3C3 /* ServiceAPI.swift */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		AB355F562836FA0200F87C71 /* ButtonWithText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithText.swift; sourceTree = "<group>"; };
+		AB355F582838256200F87C71 /* FruitEatenListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitEatenListView.swift; sourceTree = "<group>"; };
+		AB355F5B28382B3600F87C71 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		AB355F5D28382B5F00F87C71 /* StorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKey.swift; sourceTree = "<group>"; };
 		AB51E5322836440B0064E3C3 /* ErrorStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorStruct.swift; sourceTree = "<group>"; };
 		AB51E5332836440B0064E3C3 /* ServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		AB51E5342836440B0064E3C3 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
@@ -82,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB355F5A28382B1800F87C71 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				AB355F5B28382B3600F87C71 /* UserDefaultManager.swift */,
+				AB355F5D28382B5F00F87C71 /* StorageKey.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		AB51E540283681FD0064E3C3 /* ShareView */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +115,7 @@
 				AB51E5482836870E0064E3C3 /* DailyFruitView.swift */,
 				AB61A74728368FA100FD17BE /* FruitEatenFormView.swift */,
 				AB51E54A283687400064E3C3 /* AboutView.swift */,
+				AB355F582838256200F87C71 /* FruitEatenListView.swift */,
 			);
 			path = FruitDaily;
 			sourceTree = "<group>";
@@ -174,6 +190,7 @@
 		AB8D59BE28363E0A00DC1CA4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				AB355F5A28382B1800F87C71 /* Storage */,
 				AB8D59CB283640CE00DC1CA4 /* APIs */,
 				AB8D59C028363E2400DC1CA4 /* Modifier */,
 				AB8D59BF28363E1900DC1CA4 /* Extension */,
@@ -323,12 +340,15 @@
 				AB51E5492836870F0064E3C3 /* DailyFruitView.swift in Sources */,
 				AB8D59C528363E3500DC1CA4 /* Constant.swift in Sources */,
 				AB8D59BA28363DF200DC1CA4 /* WeeklyCalendaerHeaderView.swift in Sources */,
+				AB355F5E28382B5F00F87C71 /* StorageKey.swift in Sources */,
+				AB355F592838256200F87C71 /* FruitEatenListView.swift in Sources */,
 				AB355F572836FA0200F87C71 /* ButtonWithText.swift in Sources */,
 				AB8D59C228363E2D00DC1CA4 /* Date+Extension.swift in Sources */,
 				AB8D59A428363D8900DC1CA4 /* DailyEatenFruitApp.swift in Sources */,
 				AB51E5372836440C0064E3C3 /* ServiceAPI.swift in Sources */,
 				AB8D59B528363DCA00DC1CA4 /* WeekCalendarViewModel.swift in Sources */,
 				AB51E53D28364ADF0064E3C3 /* FruitModel.swift in Sources */,
+				AB355F5C28382B3700F87C71 /* UserDefaultManager.swift in Sources */,
 				AB51E53F28364AFD0064E3C3 /* EntryModel.swift in Sources */,
 				AB51E53B283648B00064E3C3 /* DailyFruitViewModel.swift in Sources */,
 			);
