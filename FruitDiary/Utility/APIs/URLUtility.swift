@@ -18,7 +18,7 @@ struct ApiModel{
 enum RequestPath: URLConvertible {
     
     var url: String {
-        return "https://fruitdiary.test.themobilelife.com/api"
+        return kConfig.apiRoot
     }
     
     case fruitList
@@ -31,17 +31,16 @@ enum RequestPath: URLConvertible {
     var path: String {
         switch self {
         case .fruitList:
-            return "/fruit"
-        case .entriesList:
-            return "/entries"
-        case .addEntries:
-            return "/entries"
+            return "api/fruit"
+            
+        case .entriesList, .addEntries, .removeEntriesList:
+            return "api/entries"
+            
         case .updateEntries(let entryId,let fruitId, let nrOfFruit):
-            return "/entry/\(entryId)/fruit/\(fruitId)?amount=\(nrOfFruit)"
-        case .removeEntriesList:
-            return "/entries"
+            return "api/entry/\(entryId)/fruit/\(fruitId)?amount=\(nrOfFruit)"
+       
         case .removeEntriesById(let entryId):
-            return "/entry/\(entryId)"
+            return "api/entry/\(entryId)"
         }
     }
     

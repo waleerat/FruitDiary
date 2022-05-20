@@ -92,6 +92,12 @@ extension Date {
         return calender.dateInterval(of: .weekOfMonth, for: self)
     }
     
+    func numberOfWeek() -> Int {
+        let cal = Calendar(identifier: .iso8601)
+        let date = ISO8601DateFormatter().date(from: self.dateToString())
+        return cal.component(.weekday, from: date ?? Date())
+    }
+    
     // MARK: - Month
     func firstDateOfMonth() -> Date {
         var components = Calendar.current.dateComponents([.year,.month], from: self)

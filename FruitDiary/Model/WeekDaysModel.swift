@@ -11,6 +11,6 @@ struct WeekDaysModel: Identifiable {
     var id: String
     var day: String
     var date: String
-    var entries: [EntriesModel]?
+    var selectedDate: String
     var isCurrentDay: Bool
 }

@@ -21,8 +21,14 @@ struct EntriesModel {
     struct Response: Codable, Hashable {
         var id: Int?
         var date: String?
-        var fruit: [FruitEatenListModel]?
+        var fruit: [FruitModel.Bundle]?
         var code: Int?
         var message: String?
+    }
+    
+    struct MapView: Identifiable {
+        var id: Int
+        var date: String
+        var fruit: [FruitModel.MapView]?
     }
 }
