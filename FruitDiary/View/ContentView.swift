@@ -38,15 +38,12 @@ struct ContentView: View {
             DashboardView(isEatenFruitFrom: $isEatenFruitFrom)
                 .environmentObject(weekCalendarVM)
                 .environmentObject(dailyFruitVM)
+                
             Spacer()
         }
-        .halfSheet(showSheet: $isEatenFruitFrom) {
-            FruitEatenFormView(isEatenFruitFrom: $isEatenFruitFrom)
-                .environmentObject(weekCalendarVM)
-                .environmentObject(dailyFruitVM)
-        } onEnd: {
-            dailyFruitVM.updateDailyEaten(selectedDate: weekCalendarVM.selectedDate)
-        }
+        
+        
+        
         
     }
 }

@@ -15,15 +15,13 @@ struct DailyFruitView: View {
     @Binding var isEatenFruitFrom:Bool
     
     @State var isAddEntry:Bool = false
-    @State var isDismiss:Bool = false
     @State var dailyEatenList: [FruitModel.MapView] = []
-    @State var showingAlert: Bool = false
-    
+    @State var showDeleteEntryAlert: Bool = false
+     
     var body: some View {
         VStack{
             HStack{
                 Spacer()
-                
                 if let _ = dailyFruitVM.getDailyItem(selectedDate: weekCalendarVM.selectedDate) {
                     IconButtonView(isActive: .constant(true),
                                    systemName: "plus",
@@ -32,7 +30,13 @@ struct DailyFruitView: View {
                                    foreground: kConfig.color.foreground,
                                    buttonBackground: kConfig.color.buttonBackground
                     ) {
-                        isEatenFruitFrom.toggle()
+                        isEatenFruitFrom = true
+                    }.halfSheet(showSheet: $isEatenFruitFrom) {
+                        FruitEatenFormView(isEatenFruitFrom: $isEatenFruitFrom)
+                            .environmentObject(weekCalendarVM)
+                            .environmentObject(dailyFruitVM)
+                    } onEnd: {
+                        dailyFruitVM.updateDailyEaten(selectedDate: weekCalendarVM.selectedDate)
                     }
                     
                     if (dailyFruitVM.entryItems.count > 0) {
@@ -43,19 +47,18 @@ struct DailyFruitView: View {
                                        foreground: kConfig.color.foreground,
                                        buttonBackground: kConfig.color.buttonBackground
                         ) {
-                            showingAlert = true
+                            showDeleteEntryAlert = true
+                            isEatenFruitFrom = false
                             //let entryId = dailyFruitVM.getEntryIdByDate(selectedDate: weekCalendarVM.selectedDate)
                             //dailyFruitVM.removeEntriesById(entryId: entryId)
                         }
                         .confirmationDialog(
                             kConfig.message.deleteButton,
-                            isPresented: $showingAlert
+                            isPresented: $showDeleteEntryAlert
                         ) {
                             Button {
-                                withAnimation {
-                                   // let entryId = dailyFruitVM.getEntryIdByDate(selectedDate: weekCalendarVM.selectedDate)
-                                   // dailyFruitVM.removeEntriesById(entryId: entryId)
-                                }
+                                let entryId = dailyFruitVM.getEntryIdByDate(selectedDate: weekCalendarVM.selectedDate)
+                                 dailyFruitVM.removeEntriesById(entryId: entryId)
                             } label: {
                                 Text(kConfig.message.deleteButton)
                             }

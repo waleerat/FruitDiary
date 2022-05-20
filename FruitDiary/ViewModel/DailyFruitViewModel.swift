@@ -85,6 +85,8 @@ class DailyFruitViewModel: ObservableObject {
             .store(in: &cancellableSet)
     }
     
+
+    
     func getEntriesList() {
         self.entryItems = []
         let serviceAPI = ServiceAPI<EntriesModel.Request, [EntriesModel.Response]>()

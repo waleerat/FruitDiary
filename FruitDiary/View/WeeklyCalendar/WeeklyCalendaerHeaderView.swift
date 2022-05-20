@@ -16,6 +16,7 @@ struct WeeklyCalendaerHeaderView: View {
             
             IconButtonView(isActive: .constant(true), systemName: "arrow.left",foreground: kConfig.color.foreground) {
                 weekCalendarVM.previousWeekRange()
+                dailyFruitVM.updateDailyEaten(selectedDate: "")
             }
             .modifier(ArrowModifier())
             
@@ -33,6 +34,7 @@ struct WeeklyCalendaerHeaderView: View {
             
             IconButtonView(isActive: .constant(true), systemName: "arrow.right",foreground: kConfig.color.foreground) {
                 weekCalendarVM.nextWeekRange()
+                dailyFruitVM.updateDailyEaten(selectedDate: "")
             }
             .modifier(ArrowModifier())
            

@@ -65,7 +65,15 @@ struct FruitEatenFormView: View {
             .padding(.vertical, 10)
             Spacer()
             
+            Text((nrOfFruit == 0 && fruitId != 0)
+                 ? kConfig.message.howMany.replacingOccurrences(of: "#fruit#", with: fruitSelectedName)
+                    : fruitId != 0
+                 ? kConfig.message.howToSave
+                    : kConfig.message.whatYouEat)
+                        .modifier(TextDescriptionModifier())
+            
             HStack {
+                
                 Text(fruitSelectedName)
                     .modifier(TextHeaderModifier(isBold: true))
                     
@@ -108,12 +116,7 @@ struct FruitEatenFormView: View {
             }
             .padding(.horizontal)
             
-            Text((nrOfFruit == 0 && fruitId != 0)
-                 ? kConfig.message.howMany.replacingOccurrences(of: "#fruit#", with: fruitSelectedName)
-                    : fruitId != 0
-                 ? kConfig.message.howToSave
-                    : kConfig.message.whatYouEat)
-                        .modifier(TextDescriptionModifier())
+
         }
         .onAppear{
             if dailyFruitVM.fruitId != 0 {

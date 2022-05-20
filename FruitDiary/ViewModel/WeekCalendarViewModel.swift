@@ -11,7 +11,7 @@ class WeekCalendarViewModel: ObservableObject {
     
     @Published var currentDate: String = Date().toString(format: "yyyy-MM-dd")
     @Published var selectedDate: String = Date().toString(format: "yyyy-MM-dd")
-    @Published var fistDateOfSelectedWeek: Date = Date()
+    @Published var dateOfSelectedWeek: Date = Date()
     @Published var eatenInWeekDays : [WeekDaysModel] = []
     
     var dailyFruitVM = DailyFruitViewModel()
@@ -22,47 +22,33 @@ class WeekCalendarViewModel: ObservableObject {
     
     func previousWeekRange() {
         eatenInWeekDays = []
-        fistDateOfSelectedWeek = fistDateOfSelectedWeek.weekPrevious()
-        
-        let numberOfWeek = Date().numberOfWeek()
-        selectedDate = fistDateOfSelectedWeek
-                        .dateCalculate(numberOfDays: numberOfWeek)
-                        .toString(format: "yyyy-MM-dd")
-        
-        dailyFruitVM.updateDailyEaten(selectedDate: selectedDate)
-        
+        dateOfSelectedWeek = dateOfSelectedWeek.weekPrevious()
+        selectedDate = dateOfSelectedWeek.toString(format: "yyyy-MM-dd")
         getWeekDays()
     }
     
     func currentWeekRange() {
         eatenInWeekDays = []
-        fistDateOfSelectedWeek = Date()
+        dateOfSelectedWeek = Date()
         getWeekDays()
     }
     
     func nextWeekRange(){
         eatenInWeekDays = []
-        fistDateOfSelectedWeek = fistDateOfSelectedWeek.weekNext()
-        
-        let numberOfWeek = Date().numberOfWeek()
-        selectedDate = fistDateOfSelectedWeek
-                        .dateCalculate(numberOfDays: numberOfWeek)
-                        .toString(format: "yyyy-MM-dd")
-        
-        dailyFruitVM.updateDailyEaten(selectedDate: selectedDate)
-        
+        dateOfSelectedWeek = dateOfSelectedWeek.weekNext()
+        selectedDate = dateOfSelectedWeek.toString(format: "yyyy-MM-dd")
         getWeekDays()
     }
     
     func getMonth() -> String {
-        return fistDateOfSelectedWeek.toString(format: "LLLL yyyy")
+        return dateOfSelectedWeek.toString(format: "LLLL yyyy")
     }
-    
-    
+  
     
     func getWeekDays(){
         
-        let startDate = self.fistDateOfSelectedWeek.firstDateOfWeek()
+        let startDate = self.dateOfSelectedWeek.firstDateOfWeek()
+        let nuberOfWeek = self.dateOfSelectedWeek.numberOfWeek() - 1
         
         for index in 0..<7{
             let dateItem = startDate.dateCalculate(numberOfDays: index)
@@ -75,7 +61,7 @@ class WeekCalendarViewModel: ObservableObject {
                               day: dateItem.toString(format: "EEE"),
                               date: dateItem.toString(format: "dd"),
                               selectedDate: indexDateFormat,
-                              isCurrentDay: currentDateFormat == indexDateFormat ? true : false)
+                              isCurrentDay: nuberOfWeek == index ? true : false)
             )
             
         }
