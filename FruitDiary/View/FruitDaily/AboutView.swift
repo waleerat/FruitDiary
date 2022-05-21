@@ -11,7 +11,7 @@ struct AboutView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("About My fruits daily App")
-                .modifier(TextTitleModifier())
+                .modifier(TextHeaderModifier(isBold: true))
             
             Text("My Fruits Diary is a mobile application where you can store the number of fruits you have eaten each day. The user is able to add date entries and for each date choose the fruits eaten on that specific day.")
             

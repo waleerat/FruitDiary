@@ -5,6 +5,7 @@
 //  Created by Waleerat Gottlieb on 2022-05-19.
 //
 
+
 import SwiftUI
 
 @main
@@ -32,3 +33,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
    }
     
 }
+
+
+

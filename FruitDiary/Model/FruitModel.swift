@@ -4,6 +4,10 @@
 //
 //  Created by Waleerat Gottlieb on 2022-05-19.
 //
+/*
+  Model for fruit view
+  Struct MapView use for UI
+ */
 
 import Foundation 
 
@@ -35,18 +39,3 @@ struct FruitModel {
         var image: String
     }
 }
-
-/*
- var dictionary: [String: Any] {
-     return [
-         "id": id,
-         "type": type,
-         "vitamins": vitamins,
-         "amount": amount,
-         "image": image ?? "" as String
-     ]
- }
- var nsDictionary: NSDictionary {
-     return dictionary as NSDictionary
- }
- */
