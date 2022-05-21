@@ -16,9 +16,9 @@ About APP
  
  
 ### >Model
-    >>WeekDaysModel.swift : weekly calendar<br />
-    >>FruitModel.swift : Fruit list resqest/response/mapView<br />
-    >>EntryModel.swift : Entry list request/Response/MapView<br />
+    WeekDaysModel.swift : weekly calendar
+    FruitModel.swift : Fruit list resqest/response/mapView
+    EntryModel.swift : Entry list request/Response/MapView
 ### >View
     ### >>FruitDiary<br />
         >>>DashboardView.swift : Landing Page / call DailyFruitView.swift<br />
