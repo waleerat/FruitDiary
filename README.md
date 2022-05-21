@@ -5,8 +5,7 @@ be viewable through a detail view. Each row in the entries list should present t
 entry, the number of fruits and the total number of vitamins in the eaten fruits that date.
 
 
-### About APP
-### ------------------------
+## About APP
  1. Force protrait orientation
  2. Show weekly calendar
  3. Show half screen popup when add/update eaten fruit amout
@@ -14,8 +13,7 @@ entry, the number of fruits and the total number of vitamins in the eaten fruits
  5. Request FruitList API just when app loaded
  6. App has no locally store.
  
- ### File Index
-### ------------------------
+ ## File Index
 ### Model
     WeekDaysModel.swift : weekly calendar
     FruitModel.swift : Fruit list resqest/response/mapView
