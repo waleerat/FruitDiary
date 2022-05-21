@@ -4,21 +4,7 @@ The existing entries should be presented through a list of some sort and a speci
 be viewable through a detail view. Each row in the entries list should present the date of the
 entry, the number of fruits and the total number of vitamins in the eaten fruits that date.
 
-## Screenshots
-<kbd>
-  <img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/05.png" width="40%" height="40%"> 
 
-|
-<img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/02.png"  width="40%" height="40%"> |
-<img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/01.png"  width="40%" height="40%"> 
-
-
-<img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/03.png" width="40%" height="40%"> |
-<img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/04.png"  width="40%" height="40%"> 
-  </kbd>
-
-
- 
 About APP
  ------------------------
  1. Force protrait orientation
@@ -29,11 +15,11 @@ About APP
  6. App has no locally store.
  
  
-### >Model<br />
+### >Model
     >>WeekDaysModel.swift : weekly calendar<br />
     >>FruitModel.swift : Fruit list resqest/response/mapView<br />
     >>EntryModel.swift : Entry list request/Response/MapView<br />
-### >View<br />
+### >View
     ### >>FruitDiary<br />
         >>>DashboardView.swift : Landing Page / call DailyFruitView.swift<br />
         >>>DailyFruitView.swift : Add new entry button / add new eaten fruit amount / call FruitEatenListView.swift<br />
@@ -49,10 +35,10 @@ About APP
         >>>WeeklyCalendaerHeaderView.swift : Previous and next icon<br />
         >>>WeeklyCalendarView.swift : Weekly calendar<br />
     >>ContentView.swift : call DashboardView.swift<br />
-### >ViewModel<br />
+### >ViewModel
     >>WeekCalendarViewModel.swift : View model for calendar<br />
     >>DailyFruitViewModel.swift : View model for API and all process<br />
-### >Utility<br />
+### >Utility
     #### >>Storage<br />
         >>>UserDefaultManager.swift : For locally storeage<br />
         >>>StorageKey.swift : locally storeage keys<br />
@@ -68,3 +54,19 @@ About APP
         >>>Date+Extension.swift<br />
     >>Constant : Constant Values for the project<br />
     >>Device : Check Device<br />
+
+## Screenshots
+<kbd>
+  <img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/05.png" width="40%" height="40%"> 
+
+|
+<img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/02.png"  width="40%" height="40%"> |
+<img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/01.png"  width="40%" height="40%"> 
+
+
+<img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/03.png" width="40%" height="40%"> |
+<img src="https://raw.githubusercontent.com/waleerat/GitHub-Photos-Shared/main/WeeklyCalendar/04.png"  width="40%" height="40%"> 
+  </kbd>
+
+
+ 
