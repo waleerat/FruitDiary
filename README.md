@@ -1,5 +1,8 @@
 # FruitDiary
 
+The existing entries should be presented through a list of some sort and a specific entry should
+be viewable through a detail view. Each row in the entries list should present the date of the
+entry, the number of fruits and the total number of vitamins in the eaten fruits that date.
 
 ## Screenshots
 <kbd>
