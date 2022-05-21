@@ -20,40 +20,40 @@ About APP
     FruitModel.swift : Fruit list resqest/response/mapView
     EntryModel.swift : Entry list request/Response/MapView
 ### >View
-    FruitDiary<br />
-        DashboardView.swift : Landing Page / call DailyFruitView.swift<br />
-        DailyFruitView.swift : Add new entry button / add new eaten fruit amount / call FruitEatenListView.swift<br />
-        FruitEatenFormView.swift : Half view for eaten fruit form<br />
-        AboutView.swift : App information<br />
-        FruitEatenListView.swift : Daily fruit list<br />
-    ShareView<br />
-        >>>ButtonWithText.swift : Text button<br />
-        >>>HalfSheetView.swift : Half sheet view<br />
-        >>>TabSlideBarView.swift : sliderbar menu button<br />
-        >>>IconButton.swift : Icon button<br />
-    WeeklyCalendar<br />
-        >>>WeeklyCalendaerHeaderView.swift : Previous and next icon<br />
-        >>>WeeklyCalendarView.swift : Weekly calendar<br />
-    >>ContentView.swift : call DashboardView.swift<br />
+    #FruitDiary
+        DashboardView.swift : Landing Page / call DailyFruitView.swift
+        DailyFruitView.swift : Add new entry button / add new eaten fruit amount / call FruitEatenListView.swift
+        FruitEatenFormView.swift : Half view for eaten fruit form
+        AboutView.swift : App information
+        FruitEatenListView.swift : Daily fruit list
+    #ShareView
+        ButtonWithText.swift : Text button
+        HalfSheetView.swift : Half sheet view
+        TabSlideBarView.swift : sliderbar menu button
+        IconButton.swift : Icon button
+    #WeeklyCalendar
+        WeeklyCalendaerHeaderView.swift : Previous and next icon
+        WeeklyCalendarView.swift : Weekly calendar
+    ContentView.swift : call DashboardView.swif
 ### >ViewModel
-    >>WeekCalendarViewModel.swift : View model for calendar<br />
-    >>DailyFruitViewModel.swift : View model for API and all process<br />
+    WeekCalendarViewModel.swift : View model for calendar
+    DailyFruitViewModel.swift : View model for API and all process
 ### >Utility
-    #### >>Storage<br />
-        >>>UserDefaultManager.swift : For locally storeage<br />
-        >>>StorageKey.swift : locally storeage keys<br />
-    #### >>APIs<br />
-        >>>AlmofireManager.swift : AlmofireConfig<br />
-        >>>ServiceAPI.swift : API GET/POST/DELETE<br />
-        >>>URLUtility.swift : All URLs for the project<br />
-        >>>ErrorStruct.swift : Error<br />
-        >>>JsonService.swift : Decode and Encode Structure <-> Json data (For locally storeage)<br />
-    #### >>Modifier<br />
-        >>>Modifier.swift : Style for UI<br />
-    #### >>Extension<br />
-        >>>Date+Extension.swift<br />
-    >>Constant : Constant Values for the project<br />
-    >>Device : Check Device<br />
+    #Storage<br />
+        UserDefaultManager.swift : For locally storeage
+        StorageKey.swift : locally storeage keys
+    #APIs<br />
+        AlmofireManager.swift : AlmofireConfig
+        ServiceAPI.swift : API GET/POST/DELETE
+        URLUtility.swift : All URLs for the project
+        ErrorStruct.swift : API Error 
+        JsonService.swift : Decode and Encode Structure <-> Json data (For locally storeage)
+    #Modifier<br />
+        Modifier.swift : Style for UI
+    #Extension
+        Date+Extension.swift
+    Constant : Constant Values for the project
+    Device : Check Device
 
 ## Screenshots
 <kbd>
