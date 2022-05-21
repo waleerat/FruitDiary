@@ -8,8 +8,11 @@
 import Foundation
 
 class WeekCalendarViewModel: ObservableObject {
-    @Published var fistDateOfSelectedWeek: Date = Date()
-    @Published var eatenInWeekDays : [WeekDaysModel] = [] 
+    
+    @Published var currentDate: String = Date().toString(format: "yyyy-MM-dd")
+    @Published var selectedDate: String = Date().toString(format: "yyyy-MM-dd")
+    @Published var dateOfSelectedWeek: Date = Date()
+    @Published var eatenInWeekDays : [WeekDaysModel] = []
     
     init(){
         getWeekDays()
@@ -17,42 +20,45 @@ class WeekCalendarViewModel: ObservableObject {
     
     func previousWeekRange() {
         eatenInWeekDays = []
-        fistDateOfSelectedWeek = fistDateOfSelectedWeek.weekPrevious()
+        dateOfSelectedWeek = dateOfSelectedWeek.weekPrevious()
+        selectedDate = dateOfSelectedWeek.toString(format: "yyyy-MM-dd")
         getWeekDays()
     }
     
     func currentWeekRange() {
         eatenInWeekDays = []
-        fistDateOfSelectedWeek = Date()
+        dateOfSelectedWeek = Date()
         getWeekDays()
     }
     
     func nextWeekRange(){
         eatenInWeekDays = []
-        fistDateOfSelectedWeek = fistDateOfSelectedWeek.weekNext()
+        dateOfSelectedWeek = dateOfSelectedWeek.weekNext()
+        selectedDate = dateOfSelectedWeek.toString(format: "yyyy-MM-dd")
         getWeekDays()
     }
     
     func getMonth() -> String {
-        return fistDateOfSelectedWeek.toString(format: "LLLL yyyy")
+        return dateOfSelectedWeek.toString(format: "LLLL yyyy")
     }
+  
     
     func getWeekDays(){
         
-        let startDate = self.fistDateOfSelectedWeek.firstDateOfWeek()
+        let startDate = self.dateOfSelectedWeek.firstDateOfWeek()
+        let nuberOfWeek = self.dateOfSelectedWeek.numberOfWeek() - 2
         
-        for index in 0..<7{
+        for index in 0..<7 {
             let dateItem = startDate.dateCalculate(numberOfDays: index)
             
-            let currentDateFormat = Date().toString(format: "yyyy-MM-dd")
-            let itemDateFormat = dateItem.toString(format: "yyyy-MM-dd")
+            let indexDateFormat = dateItem.toString(format: "yyyy-MM-dd")
             
             self.eatenInWeekDays.append(
                 WeekDaysModel(id: UUID().uuidString,
                               day: dateItem.toString(format: "EEE"),
                               date: dateItem.toString(format: "dd"),
-                              entries: nil,
-                              isCurrentDay: currentDateFormat == itemDateFormat ? true : false)
+                              selectedDate: indexDateFormat,
+                              isCurrentDay: nuberOfWeek == index ? true : false)
             )
             
         }

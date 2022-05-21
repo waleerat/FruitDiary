@@ -24,7 +24,7 @@ struct TextTitleModifier: ViewModifier {
     @State var isBold:Bool = false
     func body(content: Content) -> some View {
     content
-        .font(.system(size: isIpad() ? 35 : 22 ,weight: isBold ? .bold : .regular, design: .rounded))
+        .font(.system(size: isIpad() ? 25 : 18 ,weight: isBold ? .bold : .regular, design: .rounded))
         .lineLimit(nil)
         .multilineTextAlignment(.leading)
         .foregroundColor(foregroundColor)
@@ -36,7 +36,7 @@ struct TextDescriptionModifier: ViewModifier {
     @State var isBold:Bool = false
     func body(content: Content) -> some View {
     content
-        .font(.system(size: isIpad() ? 20 : 14 ,weight: isBold ? .bold : .regular, design: .rounded))
+        .font(.system(size: isIpad() ? 17 : 15 ,weight: isBold ? .bold : .regular, design: .rounded))
         .lineLimit(nil)
         .multilineTextAlignment(.leading)
         .foregroundColor(foregroundColor)
@@ -44,11 +44,26 @@ struct TextDescriptionModifier: ViewModifier {
 }
 
 struct ArrowModifier: ViewModifier {
+    @State var foregroundColor:Color = kConfig.color.foreground
+    @State var buttonBackground:Color = kConfig.color.buttonBackground
     
     func body(content: Content) -> some View {
         content
-            .foregroundColor(kConfig.color.buttonForeground)
-            .background(kConfig.color.buttonBackground)
+            .foregroundColor(foregroundColor)
+            .background(buttonBackground)
             .clipShape(Capsule())
+    }
+}
+
+struct TabSelecterModifier : ViewModifier {
+    var isActive:Bool = false
+    func body(content: Content) -> some View {
+        content
+            .multilineTextAlignment(.center)
+            .foregroundColor(isActive ? .white : kConfig.color.foreground.opacity(0.7))
+            .font(.system(size: isIpad() ? 25 : 16 ,weight: .regular, design: .rounded))
+            .padding(.vertical,10)
+            .padding(.horizontal,10)
+        
     }
 }

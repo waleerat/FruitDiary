@@ -11,12 +11,6 @@ struct WeekDaysModel: Identifiable {
     var id: String
     var day: String
     var date: String
-    var entries: [TaskModel]?
+    var selectedDate: String
     var isCurrentDay: Bool
-}
-
-struct TaskModel: Identifiable {
-    var id: String
-    var title: String
-    var description: String
 }

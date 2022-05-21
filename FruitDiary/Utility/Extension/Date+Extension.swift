@@ -30,34 +30,34 @@ extension Date {
     
     // MARK: - Day
     func dateNext() -> Date {
-        let nextDate = Calendar.current.date(byAdding: .day, value: 1, to: self)
+        let nextDate = Calendar(identifier: .iso8601).date(byAdding: .day, value: 1, to: self)
         return nextDate ?? Date()
     }
     
     func datePrevious() -> Date {
-        let previousDate = Calendar.current.date(byAdding: .day, value: -1, to: self)
+        let previousDate = Calendar(identifier: .iso8601).date(byAdding: .day, value: -1, to: self)
         return previousDate ?? Date()
     }
     
     func dateCalculate(numberOfDays: Int)-> Date {
-        let addDate = Calendar.current.date(byAdding: .day, value: numberOfDays, to: self)
+        let addDate = Calendar(identifier: .iso8601).date(byAdding: .day, value: numberOfDays, to: self)
         return addDate ?? Date()
     }
  
     
     // MARK: - Week
     func weekPrevious() -> Date {
-        let previousDate = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: self)
+        let previousDate = Calendar(identifier: .iso8601).date(byAdding: .weekOfYear, value: -1, to: self)
         return previousDate ?? Date()
     }
     
     func weekCurrent() -> Date {
-        let nextDate = Calendar.current.date(byAdding: .weekOfYear, value: 0, to: self)
+        let nextDate = Calendar(identifier: .iso8601).date(byAdding: .weekOfYear, value: 0, to: self)
         return nextDate ?? Date()
     }
     
     func weekNext() -> Date {
-        let nextDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self)
+        let nextDate = Calendar(identifier: .iso8601).date(byAdding: .weekOfYear, value: 1, to: self)
         return nextDate ?? Date()
     }
     
@@ -68,7 +68,7 @@ extension Date {
     }
     
     func firstDateOfWeek() -> Date {
-        let calender = Calendar.current
+        let calender = Calendar(identifier: .iso8601)
         let week = calender.dateInterval(of: .weekOfMonth, for: self)
         if let  start = week?.start {
             return start
@@ -78,7 +78,7 @@ extension Date {
     }
 
     func lastDateOfWeek() -> Date {
-        let calender = Calendar.current
+        let calender = Calendar(identifier: .iso8601)
         let week = calender.dateInterval(of: .weekOfMonth, for: self)
         if let  end = week?.end {
             return end
@@ -88,20 +88,26 @@ extension Date {
     }
     
     func weekRange() -> DateInterval? {
-        let calender = Calendar.current
+        let calender = Calendar(identifier: .iso8601)
         return calender.dateInterval(of: .weekOfMonth, for: self)
+    }
+    
+    func numberOfWeek() -> Int {
+        let cal = Calendar(identifier: .iso8601)
+        let date = ISO8601DateFormatter().date(from: self.dateToString())
+        return cal.component(.weekday, from: date ?? Date())
     }
     
     // MARK: - Month
     func firstDateOfMonth() -> Date {
-        var components = Calendar.current.dateComponents([.year,.month], from: self)
+        var components = Calendar(identifier: .iso8601).dateComponents([.year,.month], from: self)
         components.day = 2
         let firstDateOfMonth: Date = Calendar.current.date(from: components)!
         return firstDateOfMonth
     }
     
     func lastDateOfMonth() -> Date {
-        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDateOfMonth())!
+        return Calendar(identifier: .iso8601).date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDateOfMonth())!
     }
     
     func monthPrevious() -> Date {
@@ -112,7 +118,7 @@ extension Date {
     }
     
     func MonthCalculate(numberOfMonths: Int) -> Date {
-        let endDate = Calendar.current.date(byAdding: .month, value: numberOfMonths, to: self)
+        let endDate = Calendar(identifier: .iso8601).date(byAdding: .month, value: numberOfMonths, to: self)
         return endDate ?? Date()
     }
  
@@ -126,7 +132,7 @@ extension Date {
     }
     
     func YearsCalculate(numberOfYears: Int) -> Date {
-        let endDate = Calendar.current.date(byAdding: .year, value: numberOfYears, to: self)
+        let endDate = Calendar(identifier: .iso8601).date(byAdding: .year, value: numberOfYears, to: self)
         return endDate ?? Date()
     }
 }
