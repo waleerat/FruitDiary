@@ -27,20 +27,26 @@ struct FruitModel {
         var image: String
     }
     
-    struct MapView: Identifiable{
+    struct MapView: Identifiable, Codable{
         var id: Int
         var type: String
         var vitamins: Int
         var amount: Int
-        var image: URL?
+        var image: String
     }
 }
+
 /*
-struct FruitEatenListModel: Codable, Hashable {
-    var id: String
-    var type: String
-    var vitamins: Int
-    var eatenAmout: Int
-    var image: String
-}
-*/
+ var dictionary: [String: Any] {
+     return [
+         "id": id,
+         "type": type,
+         "vitamins": vitamins,
+         "amount": amount,
+         "image": image ?? "" as String
+     ]
+ }
+ var nsDictionary: NSDictionary {
+     return dictionary as NSDictionary
+ }
+ */

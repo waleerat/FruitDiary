@@ -22,7 +22,7 @@ struct ContentView: View {
                 Spacer(minLength: 0)
                 
                 Button(action: {
-                    openURL(URL(string: "https://https://iamwgo.com/waleerat-cv/")!)
+                    openURL(URL(string: "https://iamwgo.com/waleerat-cv/")!)
                 }, label: {
                     Image(systemName: "info.circle")
                         .resizable()

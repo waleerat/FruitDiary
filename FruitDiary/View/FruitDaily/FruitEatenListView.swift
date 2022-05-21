@@ -22,7 +22,7 @@ struct FruitEatenListView: View {
                 ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
                     HStack(spacing: 10){
                         
-                        KFImage(fruitItem.image)
+                        KFImage(URL(string: fruitItem.image)!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: kScreen.width * 0.3, height: kScreen.width * 0.3)

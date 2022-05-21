@@ -6,16 +6,8 @@
 //
 
 struct StorageKey {
-    static let isWalkThough = "isWalkThough"
-    static let currentUser = "currentUser"
-    static let userInfo = "userInfo"
-    static let onBoarding = "onBoarding"
-    static let profileImage = "profileImage"
- 
-    static let previousLogin = "previousLogin"
-    
-    static let signinStatus = "signinStatus"
-    static let storedEmail = "storedEmail"
-    static let storedPassword = "storedPassword"
+    static let fruitItems = "fruitItems"
+    static let entryItems = "entryItems"
+    static let fruitEatenPerDay = "fruitEatenPerDay"
 }
 

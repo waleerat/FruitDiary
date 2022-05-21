@@ -26,9 +26,23 @@ struct EntriesModel {
         var message: String?
     }
     
-    struct MapView: Identifiable {
+    struct MapView: Identifiable, Codable {
         var id: Int
         var date: String
         var fruit: [FruitModel.MapView]?
     }
 }
+
+
+/*
+ var dictionary: [String: Any] {
+     return [
+         "id": id,
+         "date": date,
+         "fruit": ["test": "test"]
+     ]
+ }
+ var nsDictionary: NSDictionary {
+     return dictionary as NSDictionary
+ }
+ */

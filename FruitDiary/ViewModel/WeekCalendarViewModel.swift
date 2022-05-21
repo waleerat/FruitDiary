@@ -14,8 +14,6 @@ class WeekCalendarViewModel: ObservableObject {
     @Published var dateOfSelectedWeek: Date = Date()
     @Published var eatenInWeekDays : [WeekDaysModel] = []
     
-    var dailyFruitVM = DailyFruitViewModel()
-    
     init(){
         getWeekDays()
     }

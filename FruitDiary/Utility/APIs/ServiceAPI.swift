@@ -34,11 +34,7 @@ class ServiceAPI<Request: Encodable, Response: Decodable> {
     
     
     func request(parameters: Request, apiModel: ApiModel) -> AnyPublisher<DataResponse<Response, NetworkError>, Never>
-    { 
-        
-       
-        
-        
+    {
         return AlamofireManager
                 .sharedManager
                 .request(apiModel.url,
@@ -73,6 +69,4 @@ class ServiceAPI<Request: Encodable, Response: Decodable> {
          print("data >> \(response.data)")     // server data
          print("result >> \(response.result)")   // result of response serialization
      }
- 
- 
  */

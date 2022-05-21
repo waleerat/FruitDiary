@@ -12,6 +12,7 @@
 		AB355F592838256200F87C71 /* FruitEatenListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F582838256200F87C71 /* FruitEatenListView.swift */; };
 		AB355F5C28382B3700F87C71 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F5B28382B3600F87C71 /* UserDefaultManager.swift */; };
 		AB355F5E28382B5F00F87C71 /* StorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F5D28382B5F00F87C71 /* StorageKey.swift */; };
+		AB355F60283918EF00F87C71 /* JsonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F5F283918EF00F87C71 /* JsonService.swift */; };
 		AB51E531283643DF0064E3C3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AB51E530283643DF0064E3C3 /* Alamofire */; };
 		AB51E5362836440C0064E3C3 /* ErrorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5322836440B0064E3C3 /* ErrorStruct.swift */; };
 		AB51E5372836440C0064E3C3 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5332836440B0064E3C3 /* ServiceAPI.swift */; };
@@ -46,6 +47,7 @@
 		AB355F582838256200F87C71 /* FruitEatenListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitEatenListView.swift; sourceTree = "<group>"; };
 		AB355F5B28382B3600F87C71 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		AB355F5D28382B5F00F87C71 /* StorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKey.swift; sourceTree = "<group>"; };
+		AB355F5F283918EF00F87C71 /* JsonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonService.swift; sourceTree = "<group>"; };
 		AB51E5322836440B0064E3C3 /* ErrorStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorStruct.swift; sourceTree = "<group>"; };
 		AB51E5332836440B0064E3C3 /* ServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		AB51E5342836440B0064E3C3 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
@@ -238,9 +240,10 @@
 			isa = PBXGroup;
 			children = (
 				AB51E5342836440B0064E3C3 /* AlamofireManager.swift */,
-				AB51E5322836440B0064E3C3 /* ErrorStruct.swift */,
 				AB51E5332836440B0064E3C3 /* ServiceAPI.swift */,
 				AB51E5352836440C0064E3C3 /* URLUtility.swift */,
+				AB51E5322836440B0064E3C3 /* ErrorStruct.swift */,
+				AB355F5F283918EF00F87C71 /* JsonService.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB51E546283682BC0064E3C3 /* TabSlideBarView.swift in Sources */,
+				AB355F60283918EF00F87C71 /* JsonService.swift in Sources */,
 				AB8D59BB28363DF200DC1CA4 /* WeeklyCalendarView.swift in Sources */,
 				AB61A74828368FA200FD17BE /* FruitEatenFormView.swift in Sources */,
 				AB51E54B283687400064E3C3 /* AboutView.swift in Sources */,
