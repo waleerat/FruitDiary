@@ -81,7 +81,7 @@ struct FruitEatenFormView: View {
                 Spacer() //nrOfFruit > 0 &&
                 ButtonWithText(label: kConfig.message.saveButton, isActive: .constant(fruitId != 0)) {
                     let entryId = dailyFruitVM.getEntryIdByDate(selectedDate: weekCalendarVM.selectedDate)
-                    dailyFruitVM.updateEntries(entryId: entryId, fruitId: fruitId, nrOfFruit: nrOfFruit)
+                    dailyFruitVM.updateEntry(entryId: entryId, fruitId: fruitId, nrOfFruit: nrOfFruit)
                     dailyFruitVM.updateDailyEaten(selectedDate: weekCalendarVM.selectedDate)
                     
                     isEatenFruitFrom = false

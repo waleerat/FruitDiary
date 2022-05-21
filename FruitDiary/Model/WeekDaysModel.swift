@@ -4,7 +4,9 @@
 //
 //  Created by Waleerat Gottlieb on 2022-05-19.
 //
-
+/*
+  Model for weekly calendar
+ */
 import Foundation
 
 struct WeekDaysModel: Identifiable {

@@ -131,7 +131,7 @@ class DailyFruitViewModel: ObservableObject {
         self.jSonFruitMapView.encodeArray(structData: data, forKey: StorageKey.entryItems)
     }
     
-    
+    // Note: - Map Entry reponse to mapView structure
     func setEntryListToMapView(data: [EntriesModel.Response], completion: @escaping (_ mapView: [EntriesModel.MapView]?) -> Void) {
         
         for item in data {
@@ -162,7 +162,7 @@ class DailyFruitViewModel: ObservableObject {
 
 // MARK: - APIs
 extension DailyFruitViewModel {
-    
+    // Note: - Get all fruits
     func getFruitList() {
         let serviceAPI = ServiceAPI<FruitModel.Request, [FruitModel.Response]>()
         let apiModel = ApiModel(url: .fruitList)
@@ -183,7 +183,7 @@ extension DailyFruitViewModel {
             .store(in: &cancellableSet)
     }
     
-    
+    // Note: - Get All Entries
     func getEntriesList() {
         self.entryItems = []
         
@@ -208,7 +208,8 @@ extension DailyFruitViewModel {
             .store(in: &cancellableSet)
     }
     
-    func addEntries(dateStr: String) {
+    // Note: - Add entry
+    func addEntry(dateStr: String) {
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.Response>()
         
         let parameterObject = EntriesModel.Request(date: dateStr)
@@ -243,7 +244,8 @@ extension DailyFruitViewModel {
             .store(in: &cancellableSet)
     }
     
-    func updateEntries(entryId: Int, fruitId: Int, nrOfFruit: Int) {
+    // Note: - Update Entry
+    func updateEntry(entryId: Int, fruitId: Int, nrOfFruit: Int) {
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .updateEntries(entryId: entryId, fruitId: fruitId, nrOfFruit: nrOfFruit),
                                 method: .post
@@ -265,7 +267,7 @@ extension DailyFruitViewModel {
             .store(in: &cancellableSet)
     }
     
-    func removeEntriesList() {
+    func removeEntryList() {
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .removeEntriesList,
                                 method: .delete
@@ -287,7 +289,7 @@ extension DailyFruitViewModel {
             .store(in: &cancellableSet)
     }
     
-    func removeEntriesById(entryId: Int) {
+    func removeEntryById(entryId: Int) {
         
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .removeEntriesById(entryId: entryId),

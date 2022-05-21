@@ -4,7 +4,10 @@
 //
 //  Created by Waleerat Gottlieb on 2022-05-19.
 //
-
+/*
+  Model for Entries
+  Struct MapView use for UI
+ */
 import Foundation
 
 struct EntriesModel {
@@ -32,17 +35,3 @@ struct EntriesModel {
         var fruit: [FruitModel.MapView]?
     }
 }
-
-
-/*
- var dictionary: [String: Any] {
-     return [
-         "id": id,
-         "date": date,
-         "fruit": ["test": "test"]
-     ]
- }
- var nsDictionary: NSDictionary {
-     return dictionary as NSDictionary
- }
- */

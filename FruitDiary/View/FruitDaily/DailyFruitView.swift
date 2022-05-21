@@ -56,7 +56,7 @@ struct DailyFruitView: View {
                         ) {
                             Button {
                                 let entryId = dailyFruitVM.getEntryIdByDate(selectedDate: weekCalendarVM.selectedDate)
-                                 dailyFruitVM.removeEntriesById(entryId: entryId)
+                                 dailyFruitVM.removeEntryById(entryId: entryId)
                             } label: {
                                 Text(kConfig.message.deleteButton)
                             }
@@ -68,7 +68,7 @@ struct DailyFruitView: View {
                     if weekCalendarVM.currentDate >= weekCalendarVM.selectedDate {
                         HStack {
                             ButtonWithText(label: kConfig.message.addNewEntry, isActive: .constant(true)) {
-                                dailyFruitVM.addEntries(dateStr: weekCalendarVM.selectedDate)
+                                dailyFruitVM.addEntry(dateStr: weekCalendarVM.selectedDate)
                             }
                         }
                     }
