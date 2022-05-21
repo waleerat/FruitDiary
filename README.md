@@ -20,18 +20,18 @@ About APP
     FruitModel.swift : Fruit list resqest/response/mapView
     EntryModel.swift : Entry list request/Response/MapView
 ### >View
-    ### >>FruitDiary<br />
-        >>>DashboardView.swift : Landing Page / call DailyFruitView.swift<br />
-        >>>DailyFruitView.swift : Add new entry button / add new eaten fruit amount / call FruitEatenListView.swift<br />
-        >>>FruitEatenFormView.swift : Half view for eaten fruit form<br />
-        >>>AboutView.swift : App information<br />
-        >>>FruitEatenListView.swift : Daily fruit list<br />
-    #### >> ShareView<br />
+    FruitDiary<br />
+        DashboardView.swift : Landing Page / call DailyFruitView.swift<br />
+        DailyFruitView.swift : Add new entry button / add new eaten fruit amount / call FruitEatenListView.swift<br />
+        FruitEatenFormView.swift : Half view for eaten fruit form<br />
+        AboutView.swift : App information<br />
+        FruitEatenListView.swift : Daily fruit list<br />
+    ShareView<br />
         >>>ButtonWithText.swift : Text button<br />
         >>>HalfSheetView.swift : Half sheet view<br />
         >>>TabSlideBarView.swift : sliderbar menu button<br />
         >>>IconButton.swift : Icon button<br />
-    #### >> WeeklyCalendar<br />
+    WeeklyCalendar<br />
         >>>WeeklyCalendaerHeaderView.swift : Previous and next icon<br />
         >>>WeeklyCalendarView.swift : Weekly calendar<br />
     >>ContentView.swift : call DashboardView.swift<br />
