@@ -31,7 +31,7 @@ struct FruitModel {
         var image: String
     }
     
-    struct MapView: Identifiable, Codable{
+    struct MapView: Identifiable, Codable, Hashable{
         var id: Int
         var type: String
         var vitamins: Int

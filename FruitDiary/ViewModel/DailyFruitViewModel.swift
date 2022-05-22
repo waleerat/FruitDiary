@@ -38,28 +38,24 @@ class DailyFruitViewModel: ObservableObject {
     }
     
     func onload(){
-        self.getEntriesList()
-        self.getFruitList()
-        
-        // Note: - Issue that I don't save in locally stored
-        // I can save to user default
-        // but I get "The data couldn’t be read because it is missing." when I decode it.
-        // I know that because of Variable type Int
-        
-        // locally stored code is below:
-        /*
+       
         // Note: - Fruit List
         if let mapView = getEntryLocallyStored() {
+            print(">>Entry  LocallyStored")
             self.entryItems = mapView
         } else {
+            print(">>Entry  API")
             self.getEntriesList()
         }
+        
         // Note: - Entry List
         if let mapView = getFruitLocallyStored() {
+            print(">>Fruit  LocallyStored")
             self.fruitItems = mapView
         } else {
+            print(">>Fruit  API")
             self.getFruitList()
-        }*/
+        }
     }
     
     func getDailyItem(selectedDate:String) -> EntriesModel.MapView? {
@@ -100,25 +96,15 @@ class DailyFruitViewModel: ObservableObject {
         }
         
     }
-    
-    // Note: - UserDefault for Entry MapView
-    func getEntryLocallyStored() -> [EntriesModel.MapView]? {
-        if let mapViewData = self.jSonEntryMapView.decodeArray(forKey: StorageKey.entryItems) {
-            return mapViewData
-        } else {
-            return nil
-        }
-    }
-    
-    func setEntryLocallyStored(data: [EntriesModel.Response]){
-        self.setEntryListToMapView(data: data) { mapView in
-            if let mapView = mapView {
-                self.jSonEntryMapView.encodeArray(structData: mapView, forKey: StorageKey.fruitItems)
-            }
-        }
-    }
-    
+}
+
+// MARK: - Fruit
+extension DailyFruitViewModel {
     // Note: - UserDefault for Fruit MapView
+    func setFruitLocallyStored(data: [FruitModel.Response]){
+        self.jSonFruitMapView.encodeArray(structData: data, forKey: StorageKey.fruitItems)
+    }
+    
     func getFruitLocallyStored() -> [FruitModel.Response]? {
         if let mapViewData = self.jSonFruitMapView.decodeArray(forKey: StorageKey.fruitItems) {
             return mapViewData
@@ -127,8 +113,45 @@ class DailyFruitViewModel: ObservableObject {
         }
     }
     
-    func setFruitLocallyStored(data: [FruitModel.Response]){
-        self.jSonFruitMapView.encodeArray(structData: data, forKey: StorageKey.entryItems)
+    // Note: - Get all fruits
+    func getFruitList() {
+        let serviceAPI = ServiceAPI<FruitModel.Request, [FruitModel.Response]>()
+        let apiModel = ApiModel(url: .fruitList)
+        
+        serviceAPI.requestWithNoParameters(apiModel: apiModel)
+            .sink { (dataResponse) in
+                if dataResponse.error != nil {
+                    self.apiResponse = self.setResponseStatus(key: .errorApi)
+                } else {
+                    if let data = dataResponse.value {
+                        self.fruitItems = data
+                        self.setFruitLocallyStored(data: data)
+                    } else {
+                        self.apiResponse = self.setResponseStatus(key: .error)
+                    }
+                }
+            }
+            .store(in: &cancellableSet)
+    }
+}
+
+// MARK: - Entry
+extension DailyFruitViewModel {
+    // Note: - UserDefault for Entry MapView
+    func setEntryLocallyStored(data: [EntriesModel.Response]){
+        self.setEntryListToMapView(data: data) { mapView in
+            if let mapView = mapView {
+                self.jSonEntryMapView.encodeArray(structData: mapView, forKey: StorageKey.entryItems)
+            }
+        }
+    }
+    
+    func getEntryLocallyStored() -> [EntriesModel.MapView]? {
+        if let mapViewData = self.jSonEntryMapView.decodeArray(forKey: StorageKey.entryItems) {
+            return mapViewData
+        } else {
+            return nil
+        }
     }
     
     // Note: - Map Entry reponse to mapView structure
@@ -154,31 +177,6 @@ class DailyFruitViewModel: ObservableObject {
         
         completion(self.entryItems)
  
-    }
-    
-}
-
-// MARK: - APIs
-extension DailyFruitViewModel {
-    // Note: - Get all fruits
-    func getFruitList() {
-        let serviceAPI = ServiceAPI<FruitModel.Request, [FruitModel.Response]>()
-        let apiModel = ApiModel(url: .fruitList)
-        
-        serviceAPI.requestWithNoParameters(apiModel: apiModel)
-            .sink { (dataResponse) in
-                if dataResponse.error != nil {
-                    self.apiResponse = self.setResponseStatus(key: .errorApi)
-                } else {
-                    if let data = dataResponse.value {
-                        self.fruitItems = data
-                        self.setFruitLocallyStored(data: data)
-                    } else {
-                        self.apiResponse = self.setResponseStatus(key: .error)
-                    }
-                }
-            }
-            .store(in: &cancellableSet)
     }
     
     // Note: - Get All Entries
@@ -310,28 +308,3 @@ extension DailyFruitViewModel {
             .store(in: &cancellableSet)
     }
 }
-
-
-      /*
-       for item in data {
-           var fruitView: [FruitModel.MapView] = []
-           if let fruitItems = item.fruit {
-               for fruitItem in fruitItems {
-                   
-                   let fruitEaten = self.fruitItems.first{ $0.id == fruitItem.fruitId }
-                   
-                   let itemMapView = FruitModel.MapView(id: fruitItem.fruitId,
-                                                        type: fruitItem.fruitType,
-                                                        vitamins: fruitEaten?.vitamins ?? 0,
-                                                        amount: fruitItem.amount,
-                                                        image: kConfig.apiRoot + (fruitEaten?.image ?? ""))
-                   
-                   fruitView.append(itemMapView)
-               }
-           }
-           self.entryItems.append(EntriesModel.MapView(id: item.id ?? 0,
-                                                       date: item.date ?? "",
-                                                       fruit: fruitView))
-       }
-       
-       completion(self.entryItems)*/
