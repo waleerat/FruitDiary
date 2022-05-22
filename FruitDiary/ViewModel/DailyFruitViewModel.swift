@@ -41,19 +41,15 @@ class DailyFruitViewModel: ObservableObject {
        
         // Note: - Fruit List
         if let mapView = getEntryLocallyStored() {
-            print(">>Entry  LocallyStored")
             self.entryItems = mapView
         } else {
-            print(">>Entry  API")
             self.getEntriesList()
         }
         
         // Note: - Entry List
         if let mapView = getFruitLocallyStored() {
-            print(">>Fruit  LocallyStored")
             self.fruitItems = mapView
         } else {
-            print(">>Fruit  API")
             self.getFruitList()
         }
     }
