@@ -134,28 +134,26 @@ class DailyFruitViewModel: ObservableObject {
     // Note: - Map Entry reponse to mapView structure
     func setEntryListToMapView(data: [EntriesModel.Response], completion: @escaping (_ mapView: [EntriesModel.MapView]?) -> Void) {
         
-        for item in data {
+        self.entryItems = data.map { item in
             var fruitView: [FruitModel.MapView] = []
             if let fruitItems = item.fruit {
-                for fruitItem in fruitItems {
-                    
+                fruitView = fruitItems.map { fruitItem in
                     let fruitEaten = self.fruitItems.first{ $0.id == fruitItem.fruitId }
-                    
-                    let itemMapView = FruitModel.MapView(id: fruitItem.fruitId,
-                                                         type: fruitItem.fruitType,
-                                                         vitamins: fruitEaten?.vitamins ?? 0,
-                                                         amount: fruitItem.amount,
-                                                         image: kConfig.apiRoot + (fruitEaten?.image ?? ""))
-                    
-                    fruitView.append(itemMapView)
+                    return FruitModel.MapView(id: fruitItem.fruitId,
+                                              type: fruitItem.fruitType,
+                                              vitamins: fruitEaten?.vitamins ?? 0,
+                                              amount: fruitItem.amount,
+                                              image: kConfig.apiRoot + (fruitEaten?.image ?? ""))
                 }
             }
-            self.entryItems.append(EntriesModel.MapView(id: item.id ?? 0,
-                                                        date: item.date ?? "",
-                                                        fruit: fruitView))
+             
+            return EntriesModel.MapView(id: item.id ?? 0,
+                                        date: item.date ?? "",
+                                        fruit: fruitView)
         }
         
         completion(self.entryItems)
+ 
     }
     
 }
@@ -312,3 +310,28 @@ extension DailyFruitViewModel {
             .store(in: &cancellableSet)
     }
 }
+
+
+      /*
+       for item in data {
+           var fruitView: [FruitModel.MapView] = []
+           if let fruitItems = item.fruit {
+               for fruitItem in fruitItems {
+                   
+                   let fruitEaten = self.fruitItems.first{ $0.id == fruitItem.fruitId }
+                   
+                   let itemMapView = FruitModel.MapView(id: fruitItem.fruitId,
+                                                        type: fruitItem.fruitType,
+                                                        vitamins: fruitEaten?.vitamins ?? 0,
+                                                        amount: fruitItem.amount,
+                                                        image: kConfig.apiRoot + (fruitEaten?.image ?? ""))
+                   
+                   fruitView.append(itemMapView)
+               }
+           }
+           self.entryItems.append(EntriesModel.MapView(id: item.id ?? 0,
+                                                       date: item.date ?? "",
+                                                       fruit: fruitView))
+       }
+       
+       completion(self.entryItems)*/
