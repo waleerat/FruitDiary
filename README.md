@@ -11,7 +11,7 @@ entry, the number of fruits and the total number of vitamins in the eaten fruits
  3. Show half screen popup when add/update eaten fruit amout
  4. Request EntryList API when add/update eaten fruit amout
  5. Request FruitList API just when app loaded
- 6. app will load data from locally storage and will request API when add/update data.
+ 6. The app will load data from locally storage and will request API when add/update data.
  
  ## File Index
 ### Model
