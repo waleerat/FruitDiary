@@ -34,4 +34,10 @@ struct EntriesModel {
         var date: String
         var fruit: [FruitModel.MapView]?
     }
+    
+    struct LocallyMapView: Identifiable, Codable {
+        var id: String
+        var date: String
+        var fruit: [FruitModel.LocallyMapView]?
+    }
 }

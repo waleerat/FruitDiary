@@ -31,11 +31,26 @@ struct FruitModel {
         var image: String
     }
     
+    struct LocallyResponse: Codable, Hashable {
+        var id: String
+        var type: String
+        var vitamins: String
+        var image: String
+    }
+    
     struct MapView: Identifiable, Codable{
         var id: Int
         var type: String
         var vitamins: Int
         var amount: Int
+        var image: String
+    }
+    
+    struct LocallyMapView: Identifiable, Codable{
+        var id: String
+        var type: String
+        var vitamins: String
+        var amount: String
         var image: String
     }
 }
