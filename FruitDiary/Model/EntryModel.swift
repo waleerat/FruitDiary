@@ -29,15 +29,9 @@ struct EntriesModel {
         var message: String?
     }
     
-    struct MapView: Identifiable, Codable {
+    struct MapView: Identifiable, Codable, Hashable {
         var id: Int
         var date: String
         var fruit: [FruitModel.MapView]?
-    }
-    
-    struct LocallyMapView: Identifiable, Codable {
-        var id: String
-        var date: String
-        var fruit: [FruitModel.LocallyMapView]?
     }
 }

@@ -10,8 +10,8 @@ import Combine
 import Alamofire
 
 class DailyFruitViewModel: ObservableObject {
-    let jSonEntryMapView = JSonService<EntriesModel.MapView, EntriesModel.MapView>()
-    let jSonFruitMapView = JSonService<FruitModel.Response, FruitModel.Response>()
+    let jSonEntryMapView = JSonService<EntriesModel.MapView>()
+    let jSonFruitMapView = JSonService<FruitModel.Response>()
     
     @Published var isLoading: Bool = true
     @Published var fruitItems: [FruitModel.Response] = []
@@ -104,24 +104,6 @@ class DailyFruitViewModel: ObservableObject {
     // Note: - UserDefault for Entry MapView
     func getEntryLocallyStored() -> [EntriesModel.MapView]? {
         if let mapViewData = self.jSonEntryMapView.decodeArray(forKey: StorageKey.entryItems) {
-           /* let mapViewData: [EntriesModel.MapView] = data.map { item in
-                var fruitView: [FruitModel.MapView] = []
-                
-                if let fruitItems = item.fruit {
-                    fruitView = fruitItems.map { fruitItem in
-                       
-                        return FruitModel.MapView(id: Int(fruitItem.id) ?? 0,
-                                                  type: fruitItem.type,
-                                                  vitamins: Int(fruitItem.vitamins) ?? 0,
-                                                  amount: Int(fruitItem.amount) ?? 0,
-                                                  image: kConfig.apiRoot + (fruitItem.image))
-                    }
-                }
-                 
-                return EntriesModel.MapView(id: Int(item.id) ?? 0,
-                                            date: item.date,
-                                            fruit: fruitView)
-            }*/
             return mapViewData
         } else {
             return nil
@@ -139,14 +121,6 @@ class DailyFruitViewModel: ObservableObject {
     // Note: - UserDefault for Fruit MapView
     func getFruitLocallyStored() -> [FruitModel.Response]? {
         if let mapViewData = self.jSonFruitMapView.decodeArray(forKey: StorageKey.fruitItems) {
-            /*
-            let mapViewData: [FruitModel.Response] = data.map { item in
-               
-                return FruitModel.Response(id: Int(item.id) ?? 0,
-                                          type: item.type,
-                                          vitamins: Int(item.vitamins) ?? 0,
-                                          image: kConfig.apiRoot + (item.image))
-            }*/
             return mapViewData
         } else {
             return nil
