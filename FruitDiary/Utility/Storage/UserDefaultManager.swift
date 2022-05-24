@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct StorageKeyManager {
-    
+struct LocalStorageManager { 
     let userDefaults = UserDefaults.standard
     
     func set(_ forKey: String, data: Any) {
