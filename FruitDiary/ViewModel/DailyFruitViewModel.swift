@@ -38,7 +38,9 @@ class DailyFruitViewModel: ObservableObject {
     }
     
     func onload(){
-       
+        self.getEntriesList()
+        self.getFruitList()
+       /*
         // Note: - Fruit List
         if let mapView = getEntryLocallyStored() {
             print(">>Entry  LocallyStored")
@@ -55,32 +57,36 @@ class DailyFruitViewModel: ObservableObject {
         } else {
             print(">>Fruit  API")
             self.getFruitList()
-        }
+        }*/
     }
     
     func getDailyItem(selectedDate:String) -> EntriesModel.MapView? {
-        
+        self.apiResponse = nil
         let dailyEaten = self.entryItems.first{ $0.date == selectedDate }
         return dailyEaten
     }
     
     func getDailyEaten(selectedDate:String) -> [FruitModel.MapView] {
+        self.apiResponse = nil
         let dailyEaten = self.entryItems.first{ $0.date == selectedDate }
         return dailyEaten?.fruit ?? []
     }
     
     func getEntryIdByDate(selectedDate:String) -> Int {
+        self.apiResponse = nil
         let dailyEaten = self.entryItems.first{ $0.date == selectedDate }
         return dailyEaten?.id ?? 0
     }
     
     
     func getFruitEatenRow(fruitId:Int) -> FruitModel.MapView? {
+        self.apiResponse = nil
         let fruitItem = self.fruitEatenPerDay.first{ $0.id == fruitId }
         return fruitItem ?? nil
     }
     
     func updateDailyEaten(selectedDate: String){
+        self.apiResponse = nil
         self.fruitEatenPerDay = self.getDailyEaten(selectedDate: selectedDate)
     }
     
@@ -94,7 +100,6 @@ class DailyFruitViewModel: ObservableObject {
         case .success:
             return EntriesModel.ApiResponse(code: 200, message: "OK")
         }
-        
     }
 }
 
@@ -130,8 +135,10 @@ extension DailyFruitViewModel {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
                 }
+                self.apiResponse = self.setResponseStatus(key: .errorApi)
             }
             .store(in: &cancellableSet)
+        
     }
 }
 

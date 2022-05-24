@@ -15,7 +15,6 @@ struct ContentView: View {
     var body: some View {
         VStack{
             HStack{
-                
                 Text("Daily Fruit")
                     .modifier(TextTitleModifier(isBold: true))
                 
@@ -36,12 +35,12 @@ struct ContentView: View {
             DashboardView()
                 .environmentObject(weekCalendarVM)
                 .environmentObject(dailyFruitVM)
+               /* .onChange(of: (dailyFruitVM.apiResponse != nil)) { newValue in
+                    print(dailyFruitVM.apiResponse?.message ?? "")
+                }*/
                 
             Spacer()
         }
-        
-        
-        
         
     }
 }
