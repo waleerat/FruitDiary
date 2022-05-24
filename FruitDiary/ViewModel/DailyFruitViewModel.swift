@@ -133,7 +133,6 @@ extension DailyFruitViewModel {
     
     // Note: - Get all fruits
     func getFruitList() {
-        self.apiResponse = nil
         let serviceAPI = ServiceAPI<FruitModel.Request, [FruitModel.Response]>()
         let apiModel = ApiModel(url: .fruitList)
         
@@ -177,7 +176,6 @@ extension DailyFruitViewModel {
     
     // Note: - Map Entry reponse to mapView structure
     func setEntryListToMapView(data: [EntriesModel.Response], completion: @escaping (_ mapView: [EntriesModel.MapView]?) -> Void) {
-        
         self.entryItems = data.map { item in
             var fruitView: [FruitModel.MapView] = []
             if let fruitItems = item.fruit {
@@ -202,7 +200,6 @@ extension DailyFruitViewModel {
     
     // Note: - Get All Entries
     func getEntriesList() {
-        self.apiResponse = nil
         self.entryItems = []
         
         let serviceAPI = ServiceAPI<EntriesModel.Request, [EntriesModel.Response]>()
@@ -227,7 +224,6 @@ extension DailyFruitViewModel {
     
     // Note: - Add entry
     func addEntry(dateStr: String) {
-        self.apiResponse = nil
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.Response>()
         
         let parameterObject = EntriesModel.Request(date: dateStr)
@@ -262,7 +258,6 @@ extension DailyFruitViewModel {
     
     // Note: - Update Entry
     func updateEntry(entryId: Int, fruitId: Int, nrOfFruit: Int) {
-        self.apiResponse = nil
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .updateEntries(entryId: entryId, fruitId: fruitId, nrOfFruit: nrOfFruit),
                                 method: .post
@@ -285,7 +280,6 @@ extension DailyFruitViewModel {
     }
     
     func removeEntryList() {
-        self.apiResponse = nil
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .removeEntriesList,
                                 method: .delete
@@ -309,7 +303,6 @@ extension DailyFruitViewModel {
     }
     
     func removeEntryById(entryId: Int) {
-        self.apiResponse = nil
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .removeEntriesById(entryId: entryId),
                                 method: .delete
