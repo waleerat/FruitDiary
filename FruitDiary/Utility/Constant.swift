@@ -34,11 +34,16 @@ struct kConfig {
         static let whatYouEat: String = "What did you eat?"
         static let howMany: String = "How many did #fruit# you eat?"
         static let addNewEntry: String = "New entry"
+        
+        struct error {
+            static let alertTitle: String = "Something wrong"
+            static let errorRequest: String = "Something went wrong"
+            static let errorDefault: String = "Something went wrong"
+            static let tryAgainMessage: String = "Please try again."
+            static let okButton: String = "OK"
+        }
     }
     
-    struct error {
-        static let errorRequest: String = "Something went wrong"
-        static let errorDefault: String = "Something went wrong"
-    }
+    
 }
  

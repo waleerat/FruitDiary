@@ -19,7 +19,7 @@ class DailyFruitViewModel: ObservableObject {
     @Published var fruitEatenPerDay: [FruitModel.MapView] = []
     
     @Published var apiResponse: EntriesModel.ApiResponse?
-    @Published var addedResponse: EntriesModel.Response?
+    @Published var apiResponseMessages: [String] = []
     
     //update value
     @Published var fruitId: Int = 0
@@ -38,9 +38,6 @@ class DailyFruitViewModel: ObservableObject {
     }
     
     func onload(){
-        self.getEntriesList()
-        self.getFruitList()
-       /*
         // Note: - Fruit List
         if let mapView = getEntryLocallyStored() {
             print(">>Entry  LocallyStored")
@@ -57,36 +54,31 @@ class DailyFruitViewModel: ObservableObject {
         } else {
             print(">>Fruit  API")
             self.getFruitList()
-        }*/
+        }
     }
     
     func getDailyItem(selectedDate:String) -> EntriesModel.MapView? {
-        self.apiResponse = nil
         let dailyEaten = self.entryItems.first{ $0.date == selectedDate }
         return dailyEaten
     }
     
     func getDailyEaten(selectedDate:String) -> [FruitModel.MapView] {
-        self.apiResponse = nil
         let dailyEaten = self.entryItems.first{ $0.date == selectedDate }
         return dailyEaten?.fruit ?? []
     }
     
     func getEntryIdByDate(selectedDate:String) -> Int {
-        self.apiResponse = nil
         let dailyEaten = self.entryItems.first{ $0.date == selectedDate }
         return dailyEaten?.id ?? 0
     }
     
     
     func getFruitEatenRow(fruitId:Int) -> FruitModel.MapView? {
-        self.apiResponse = nil
         let fruitItem = self.fruitEatenPerDay.first{ $0.id == fruitId }
         return fruitItem ?? nil
     }
     
     func updateDailyEaten(selectedDate: String){
-        self.apiResponse = nil
         self.fruitEatenPerDay = self.getDailyEaten(selectedDate: selectedDate)
     }
     
@@ -94,12 +86,33 @@ class DailyFruitViewModel: ObservableObject {
         
         switch key {
         case .errorApi:
-            return EntriesModel.ApiResponse(code: 0, message: kConfig.error.errorRequest)
+            return EntriesModel.ApiResponse(code: 0, message: kConfig.message.error.errorRequest)
         case .error:
-            return EntriesModel.ApiResponse(code: 1, message: kConfig.error.errorDefault)
+            return EntriesModel.ApiResponse(code: 1, message: kConfig.message.error.errorDefault)
         case .success:
             return EntriesModel.ApiResponse(code: 200, message: "OK")
         }
+    }
+    
+    func handleApiResponseMessages(){
+        if self.apiResponse != nil {
+            if apiResponse?.code != 200 {
+                apiResponseMessages.append(apiResponse?.message ?? "Unknown")
+            }
+        }
+    }
+    
+    func getApiResponseMessagesToString() -> String? {
+        var message: String = ""
+        if apiResponseMessages.count > 0 {
+            message +=  "\n"
+            for item in apiResponseMessages {
+                message +=  item + "\n"
+            }
+            message +=  "\n \(kConfig.message.error.tryAgainMessage) \n"
+            return message
+        }
+        return nil
     }
 }
 
@@ -120,6 +133,7 @@ extension DailyFruitViewModel {
     
     // Note: - Get all fruits
     func getFruitList() {
+        self.apiResponse = nil
         let serviceAPI = ServiceAPI<FruitModel.Request, [FruitModel.Response]>()
         let apiModel = ApiModel(url: .fruitList)
         
@@ -135,7 +149,7 @@ extension DailyFruitViewModel {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
                 }
-                self.apiResponse = self.setResponseStatus(key: .errorApi)
+                self.handleApiResponseMessages()
             }
             .store(in: &cancellableSet)
         
@@ -188,6 +202,7 @@ extension DailyFruitViewModel {
     
     // Note: - Get All Entries
     func getEntriesList() {
+        self.apiResponse = nil
         self.entryItems = []
         
         let serviceAPI = ServiceAPI<EntriesModel.Request, [EntriesModel.Response]>()
@@ -198,21 +213,21 @@ extension DailyFruitViewModel {
                 if dataResponse.error != nil {
                     self.apiResponse = self.setResponseStatus(key: .errorApi)
                 } else {
-                    
                     if let data = dataResponse.value {
                         self.setEntryLocallyStored(data: data)
                         self.apiResponse = self.setResponseStatus(key: .success)
                     } else {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
-                    
                 }
+                self.handleApiResponseMessages()
             }
             .store(in: &cancellableSet)
     }
     
     // Note: - Add entry
     func addEntry(dateStr: String) {
+        self.apiResponse = nil
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.Response>()
         
         let parameterObject = EntriesModel.Request(date: dateStr)
@@ -225,9 +240,7 @@ extension DailyFruitViewModel {
         serviceAPI.request(parameters: parameterObject, apiModel: apiModel)
             .sink { (dataResponse) in
                 if dataResponse.error != nil {
-                    
                     self.apiResponse = self.setResponseStatus(key: .errorApi)
-                    
                 } else {
                     
                     if let addedData = dataResponse.value {
@@ -235,7 +248,6 @@ extension DailyFruitViewModel {
                             self.apiResponse = EntriesModel.ApiResponse(code: addedData.code ?? 0,
                                                                         message: addedData.message ?? "")
                         } else {
-                            self.addedResponse = addedData
                             self.getEntriesList()
                             self.apiResponse = self.setResponseStatus(key: .success)
                         }
@@ -243,12 +255,14 @@ extension DailyFruitViewModel {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
                 }
+                self.handleApiResponseMessages()
             }
             .store(in: &cancellableSet)
     }
     
     // Note: - Update Entry
     func updateEntry(entryId: Int, fruitId: Int, nrOfFruit: Int) {
+        self.apiResponse = nil
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .updateEntries(entryId: entryId, fruitId: fruitId, nrOfFruit: nrOfFruit),
                                 method: .post
@@ -261,16 +275,17 @@ extension DailyFruitViewModel {
                 } else {
                     if let data = dataResponse.value {
                         self.apiResponse = data
-                        self.getEntriesList()
                     } else {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
                 }
+                self.handleApiResponseMessages()
             }
             .store(in: &cancellableSet)
     }
     
     func removeEntryList() {
+        self.apiResponse = nil
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .removeEntriesList,
                                 method: .delete
@@ -288,12 +303,13 @@ extension DailyFruitViewModel {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
                 }
+                self.handleApiResponseMessages()
             }
             .store(in: &cancellableSet)
     }
     
     func removeEntryById(entryId: Int) {
-        
+        self.apiResponse = nil
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .removeEntriesById(entryId: entryId),
                                 method: .delete
@@ -311,6 +327,7 @@ extension DailyFruitViewModel {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
                 }
+                self.handleApiResponseMessages()
             }
             .store(in: &cancellableSet)
     }

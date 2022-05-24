@@ -12,6 +12,8 @@ struct ContentView: View {
     @EnvironmentObject var weekCalendarVM: WeekCalendarViewModel
     @StateObject var dailyFruitVM = DailyFruitViewModel()
     
+    @State var showingAlert:Bool = false
+    
     var body: some View {
         VStack{
             HStack{
@@ -35,9 +37,12 @@ struct ContentView: View {
             DashboardView()
                 .environmentObject(weekCalendarVM)
                 .environmentObject(dailyFruitVM)
-               /* .onChange(of: (dailyFruitVM.apiResponse != nil)) { newValue in
-                    print(dailyFruitVM.apiResponse?.message ?? "")
-                }*/
+                .onChange(of: (dailyFruitVM.apiResponse != nil) , perform: { newValue in
+                    showingAlert = dailyFruitVM.apiResponseMessages.count > 0 ? true: false
+                })
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text(kConfig.message.error.alertTitle), message: Text(dailyFruitVM.getApiResponseMessagesToString() ?? ""), dismissButton: .default(Text(kConfig.message.error.okButton)))
+                }
                 
             Spacer()
         }
