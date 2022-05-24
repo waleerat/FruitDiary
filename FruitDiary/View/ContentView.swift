@@ -37,7 +37,7 @@ struct ContentView: View {
             DashboardView()
                 .environmentObject(weekCalendarVM)
                 .environmentObject(dailyFruitVM)
-                .onChange(of: (dailyFruitVM.apiResponse != nil) , perform: { newValue in
+                .onChange(of: (dailyFruitVM.isRequestApi) , perform: { newValue in
                     showingAlert = dailyFruitVM.apiResponseMessages.count > 0 ? true: false
                 })
                 .alert(isPresented: $showingAlert) {

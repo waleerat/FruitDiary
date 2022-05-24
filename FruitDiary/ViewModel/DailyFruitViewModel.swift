@@ -14,12 +14,13 @@ class DailyFruitViewModel: ObservableObject {
     let jSonFruitMapView = JSonService<FruitModel.Response>()
     
     @Published var isLoading: Bool = true
+    @Published var isRequestApi: Bool = false
     @Published var fruitItems: [FruitModel.Response] = []
     @Published var entryItems: [EntriesModel.MapView] = []
     @Published var fruitEatenPerDay: [FruitModel.MapView] = []
     
     @Published var apiResponse: EntriesModel.ApiResponse?
-    @Published var apiResponseMessages: [String] = []
+    @Published var apiResponseMessages: [Int:String] = [:]
     
     //update value
     @Published var fruitId: Int = 0
@@ -38,6 +39,7 @@ class DailyFruitViewModel: ObservableObject {
     }
     
     func onload(){
+       
         // Note: - Fruit List
         if let mapView = getEntryLocallyStored() {
             print(">>Entry  LocallyStored")
@@ -97,7 +99,10 @@ class DailyFruitViewModel: ObservableObject {
     func handleApiResponseMessages(){
         if self.apiResponse != nil {
             if apiResponse?.code != 200 {
-                apiResponseMessages.append(apiResponse?.message ?? "Unknown")
+                apiResponseMessages[apiResponse?.code ?? 0] = apiResponse?.message ?? "Unknown"
+                isRequestApi = true
+            } else {
+                isRequestApi = false
             }
         }
     }
@@ -106,8 +111,8 @@ class DailyFruitViewModel: ObservableObject {
         var message: String = ""
         if apiResponseMessages.count > 0 {
             message +=  "\n"
-            for item in apiResponseMessages {
-                message +=  item + "\n"
+            for (_, value) in apiResponseMessages {
+                message +=  value + "\n"
             }
             message +=  "\n \(kConfig.message.error.tryAgainMessage) \n"
             return message
@@ -151,7 +156,6 @@ extension DailyFruitViewModel {
                 self.handleApiResponseMessages()
             }
             .store(in: &cancellableSet)
-        
     }
 }
 
@@ -176,6 +180,7 @@ extension DailyFruitViewModel {
     
     // Note: - Map Entry reponse to mapView structure
     func setEntryListToMapView(data: [EntriesModel.Response], completion: @escaping (_ mapView: [EntriesModel.MapView]?) -> Void) {
+        
         self.entryItems = data.map { item in
             var fruitView: [FruitModel.MapView] = []
             if let fruitItems = item.fruit {
@@ -210,12 +215,14 @@ extension DailyFruitViewModel {
                 if dataResponse.error != nil {
                     self.apiResponse = self.setResponseStatus(key: .errorApi)
                 } else {
+                    
                     if let data = dataResponse.value {
                         self.setEntryLocallyStored(data: data)
                         self.apiResponse = self.setResponseStatus(key: .success)
                     } else {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
+                    
                 }
                 self.handleApiResponseMessages()
             }
@@ -236,9 +243,10 @@ extension DailyFruitViewModel {
         serviceAPI.request(parameters: parameterObject, apiModel: apiModel)
             .sink { (dataResponse) in
                 if dataResponse.error != nil {
-                    self.apiResponse = self.setResponseStatus(key: .errorApi)
-                } else {
                     
+                    self.apiResponse = self.setResponseStatus(key: .errorApi)
+                    
+                } else {
                     if let addedData = dataResponse.value {
                         if addedData.code != nil {
                             self.apiResponse = EntriesModel.ApiResponse(code: addedData.code ?? 0,
@@ -259,7 +267,7 @@ extension DailyFruitViewModel {
     // Note: - Update Entry
     func updateEntry(entryId: Int, fruitId: Int, nrOfFruit: Int) {
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
-        let apiModel = ApiModel(url: .updateEntries(entryId: entryId, fruitId: fruitId, nrOfFruit: nrOfFruit),
+        let apiModel = ApiModel(url: .updateEntries(entryId: 1, fruitId: fruitId, nrOfFruit: nrOfFruit),
                                 method: .post
         )
         
@@ -270,6 +278,7 @@ extension DailyFruitViewModel {
                 } else {
                     if let data = dataResponse.value {
                         self.apiResponse = data
+                        self.getEntriesList()
                     } else {
                         self.apiResponse = self.setResponseStatus(key: .error)
                     }
@@ -303,6 +312,7 @@ extension DailyFruitViewModel {
     }
     
     func removeEntryById(entryId: Int) {
+        
         let serviceAPI = ServiceAPI<EntriesModel.Request, EntriesModel.ApiResponse>()
         let apiModel = ApiModel(url: .removeEntriesById(entryId: entryId),
                                 method: .delete

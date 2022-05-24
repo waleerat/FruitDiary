@@ -14,6 +14,7 @@
 		AB355F5E28382B5F00F87C71 /* StorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F5D28382B5F00F87C71 /* StorageKey.swift */; };
 		AB355F60283918EF00F87C71 /* JsonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F5F283918EF00F87C71 /* JsonService.swift */; };
 		AB355F62283953E700F87C71 /* FileIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F61283953E600F87C71 /* FileIndex.swift */; };
+		AB355F73283CC4A000F87C71 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB355F72283CC49F00F87C71 /* Array+Extension.swift */; };
 		AB51E531283643DF0064E3C3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AB51E530283643DF0064E3C3 /* Alamofire */; };
 		AB51E5362836440C0064E3C3 /* ErrorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5322836440B0064E3C3 /* ErrorStruct.swift */; };
 		AB51E5372836440C0064E3C3 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51E5332836440B0064E3C3 /* ServiceAPI.swift */; };
@@ -50,6 +51,7 @@
 		AB355F5D28382B5F00F87C71 /* StorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKey.swift; sourceTree = "<group>"; };
 		AB355F5F283918EF00F87C71 /* JsonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonService.swift; sourceTree = "<group>"; };
 		AB355F61283953E600F87C71 /* FileIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIndex.swift; sourceTree = "<group>"; };
+		AB355F72283CC49F00F87C71 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		AB51E5322836440B0064E3C3 /* ErrorStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorStruct.swift; sourceTree = "<group>"; };
 		AB51E5332836440B0064E3C3 /* ServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		AB51E5342836440B0064E3C3 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				AB8D59C128363E2D00DC1CA4 /* Date+Extension.swift */,
+				AB355F72283CC49F00F87C71 /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				AB8D59B728363DE800DC1CA4 /* WeekDaysModel.swift in Sources */,
 				AB51E5382836440C0064E3C3 /* AlamofireManager.swift in Sources */,
 				AB8D59BD28363E0200DC1CA4 /* ContentView.swift in Sources */,
+				AB355F73283CC4A000F87C71 /* Array+Extension.swift in Sources */,
 				AB51E5422836821B0064E3C3 /* HalfSheetView.swift in Sources */,
 				AB8D59C628363E3500DC1CA4 /* Device.swift in Sources */,
 				AB51E5392836440C0064E3C3 /* URLUtility.swift in Sources */,
